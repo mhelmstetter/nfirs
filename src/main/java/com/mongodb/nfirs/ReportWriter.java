@@ -28,6 +28,7 @@ public class ReportWriter {
     MongoClient mongoClient;
     private DBCollection incidentCountyMonthly;
     private DBCollection incidentStateMonthly;
+    private DBCollection incidentNationalMonthly;
     
     JsonWriter writer = new JsonWriter(new OutputStreamWriter(System.out));
     
@@ -41,6 +42,7 @@ public class ReportWriter {
         DB db = mongoClient.getDB("nfirs");
         incidentCountyMonthly = db.getCollection("IncidentCountyMonthly");
         incidentStateMonthly = db.getCollection("IncidentStateMonthly");
+        incidentNationalMonthly = db.getCollection("IncidentNationalMonthly");
     }
     
     private List<DBObject> getGenericTypeCountPercent(DBCollection coll, DBObject query) { 
@@ -80,6 +82,14 @@ public class ReportWriter {
         return getGenericTypeCountPercent(incidentStateMonthly, query);
     }
     
+    private List<DBObject> getIncidentsNational(int month) {
+        List<DBObject> incidents = new ArrayList<DBObject>();
+        DBObject query = new BasicDBObject();
+        query.put("year", year);
+        query.put("month", month);
+        return getGenericTypeCountPercent(incidentNationalMonthly, query);
+    }
+    
     private void writeGenericTypeValuePercent(String rootName, List<DBObject> incidents) throws IOException {
         writer.name(rootName).beginObject();
         writer.name("incident_types").beginArray();
@@ -111,6 +121,11 @@ public class ReportWriter {
         writeGenericTypeValuePercent("state_data", incidents);
     }
     
+    private void writeNationalData(int month) throws IOException {
+        List<DBObject> incidents = getIncidentsNational(month);
+        writeGenericTypeValuePercent("national_data", incidents);
+    }
+    
     public void writeReport() throws IOException {
         
         writer.setIndent("    ");
@@ -135,6 +150,7 @@ public class ReportWriter {
             writer.name("month").value(month);
             writeMetroData(month);
             writeStateData(month);
+            writeNationalData(month);
             writer.endObject(); // month
         }
         

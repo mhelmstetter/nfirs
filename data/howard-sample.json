@@ -1,0 +1,1080 @@
+{
+    "name": "HOWARD",
+    "state": "MD",
+    "current_month": "March",
+    "current_year": 2015,
+    "current_date": "03/12/2015",
+    "years": [
+        {
+            "year": 2011,
+            "month_periods": [
+                {
+                    "month": 1,
+                    "metro_data": {
+                        "incident_types": [
+                            {
+                                "type": "EMS",
+                                "value": 1,
+                                "percent_of_whole": 1.7857142857142856
+                            },
+                            {
+                                "type": "Other",
+                                "value": 2,
+                                "percent_of_whole": 3.571428571428571
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 41,
+                                "percent_of_whole": 73.21428571428571
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 11,
+                                "percent_of_whole": 19.642857142857142
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 1,
+                                "percent_of_whole": 1.7857142857142856
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "state_data": {
+                        "incident_types": [
+                            {
+                                "type": "Other",
+                                "value": 96,
+                                "percent_of_whole": 6.584362139917696
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 573,
+                                "percent_of_whole": 39.300411522633745
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 385,
+                                "percent_of_whole": 26.406035665294926
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 39,
+                                "percent_of_whole": 2.674897119341564
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 365,
+                                "percent_of_whole": 25.03429355281207
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "national_data": {
+                        "incident_types": [
+                            {
+                                "type": "Other",
+                                "value": 135,
+                                "percent_of_whole": 5.07137490608565
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 52,
+                                "percent_of_whole": 1.9534184823441023
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 630,
+                                "percent_of_whole": 23.6664162283997
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 1475,
+                                "percent_of_whole": 55.40946656649136
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 370,
+                                "percent_of_whole": 13.899323816679187
+                            }
+                        ],
+                        "failure_types": []
+                    }
+                },
+                {
+                    "month": 2,
+                    "metro_data": {
+                        "incident_types": [
+                            {
+                                "type": "Other",
+                                "value": 8,
+                                "percent_of_whole": 13.333333333333334
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 8,
+                                "percent_of_whole": 13.333333333333334
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 44,
+                                "percent_of_whole": 73.33333333333333
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "state_data": {
+                        "incident_types": [
+                            {
+                                "type": "EMS",
+                                "value": 432,
+                                "percent_of_whole": 28.180039138943247
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 536,
+                                "percent_of_whole": 34.96412263535551
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 397,
+                                "percent_of_whole": 25.896934116112195
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 63,
+                                "percent_of_whole": 4.10958904109589
+                            },
+                            {
+                                "type": "Other",
+                                "value": 105,
+                                "percent_of_whole": 6.8493150684931505
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "national_data": {
+                        "incident_types": [
+                            {
+                                "type": "Arson",
+                                "value": 1361,
+                                "percent_of_whole": 51.69008735282947
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 609,
+                                "percent_of_whole": 23.129510064565135
+                            },
+                            {
+                                "type": "Other",
+                                "value": 153,
+                                "percent_of_whole": 5.810862134447398
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 437,
+                                "percent_of_whole": 16.59703759969616
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 73,
+                                "percent_of_whole": 2.772502848461831
+                            }
+                        ],
+                        "failure_types": []
+                    }
+                },
+                {
+                    "month": 3,
+                    "metro_data": {
+                        "incident_types": [
+                            {
+                                "type": "Hazmat",
+                                "value": 1,
+                                "percent_of_whole": 1.5873015873015872
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 12,
+                                "percent_of_whole": 19.047619047619047
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 48,
+                                "percent_of_whole": 76.19047619047619
+                            },
+                            {
+                                "type": "Other",
+                                "value": 2,
+                                "percent_of_whole": 3.1746031746031744
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "state_data": {
+                        "incident_types": [
+                            {
+                                "type": "Other",
+                                "value": 98,
+                                "percent_of_whole": 6.815020862308763
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 388,
+                                "percent_of_whole": 26.981919332406118
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 37,
+                                "percent_of_whole": 2.5730180806675937
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 380,
+                                "percent_of_whole": 26.425591098748264
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 535,
+                                "percent_of_whole": 37.20445062586926
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "national_data": {
+                        "incident_types": [
+                            {
+                                "type": "Hazmat",
+                                "value": 45,
+                                "percent_of_whole": 1.7334360554699537
+                            },
+                            {
+                                "type": "Other",
+                                "value": 147,
+                                "percent_of_whole": 5.6625577812018495
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 666,
+                                "percent_of_whole": 25.654853620955315
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 394,
+                                "percent_of_whole": 15.177195685670261
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 1344,
+                                "percent_of_whole": 51.771956856702616
+                            }
+                        ],
+                        "failure_types": []
+                    }
+                },
+                {
+                    "month": 4,
+                    "metro_data": {
+                        "incident_types": [
+                            {
+                                "type": "FireRescue",
+                                "value": 11,
+                                "percent_of_whole": 16.176470588235293
+                            },
+                            {
+                                "type": "Other",
+                                "value": 4,
+                                "percent_of_whole": 5.88235294117647
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 52,
+                                "percent_of_whole": 76.47058823529412
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 1,
+                                "percent_of_whole": 1.4705882352941175
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "state_data": {
+                        "incident_types": [
+                            {
+                                "type": "EMS",
+                                "value": 381,
+                                "percent_of_whole": 26.43997224149896
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 34,
+                                "percent_of_whole": 2.359472588480222
+                            },
+                            {
+                                "type": "Other",
+                                "value": 102,
+                                "percent_of_whole": 7.0784177654406655
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 393,
+                                "percent_of_whole": 27.27272727272727
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 531,
+                                "percent_of_whole": 36.84941013185288
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "national_data": {
+                        "incident_types": [
+                            {
+                                "type": "Other",
+                                "value": 143,
+                                "percent_of_whole": 6.008403361344538
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 386,
+                                "percent_of_whole": 16.218487394957982
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 594,
+                                "percent_of_whole": 24.95798319327731
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 1213,
+                                "percent_of_whole": 50.96638655462185
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 44,
+                                "percent_of_whole": 1.8487394957983194
+                            }
+                        ],
+                        "failure_types": []
+                    }
+                },
+                {
+                    "month": 5,
+                    "metro_data": {
+                        "incident_types": [
+                            {
+                                "type": "Other",
+                                "value": 5,
+                                "percent_of_whole": 5.813953488372093
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 3,
+                                "percent_of_whole": 3.488372093023256
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 9,
+                                "percent_of_whole": 10.465116279069768
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 69,
+                                "percent_of_whole": 80.23255813953489
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "state_data": {
+                        "incident_types": [
+                            {
+                                "type": "Arson",
+                                "value": 592,
+                                "percent_of_whole": 37.46835443037975
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 34,
+                                "percent_of_whole": 2.151898734177215
+                            },
+                            {
+                                "type": "Other",
+                                "value": 83,
+                                "percent_of_whole": 5.253164556962026
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 416,
+                                "percent_of_whole": 26.329113924050635
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 455,
+                                "percent_of_whole": 28.79746835443038
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "national_data": {
+                        "incident_types": [
+                            {
+                                "type": "Other",
+                                "value": 122,
+                                "percent_of_whole": 5.334499344118933
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 668,
+                                "percent_of_whole": 29.208570179274158
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 46,
+                                "percent_of_whole": 2.0113686051595976
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 1033,
+                                "percent_of_whole": 45.168342807170966
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 418,
+                                "percent_of_whole": 18.277219064276345
+                            }
+                        ],
+                        "failure_types": []
+                    }
+                },
+                {
+                    "month": 6,
+                    "metro_data": {
+                        "incident_types": [
+                            {
+                                "type": "Hazmat",
+                                "value": 1,
+                                "percent_of_whole": 1.1904761904761905
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 17,
+                                "percent_of_whole": 20.238095238095237
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 61,
+                                "percent_of_whole": 72.61904761904762
+                            },
+                            {
+                                "type": "Other",
+                                "value": 5,
+                                "percent_of_whole": 5.952380952380952
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "state_data": {
+                        "incident_types": [
+                            {
+                                "type": "EMS",
+                                "value": 378,
+                                "percent_of_whole": 22.853688029020557
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 34,
+                                "percent_of_whole": 2.0556227327690446
+                            },
+                            {
+                                "type": "Other",
+                                "value": 133,
+                                "percent_of_whole": 8.04111245465538
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 540,
+                                "percent_of_whole": 32.64812575574365
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 569,
+                                "percent_of_whole": 34.40145102781136
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "national_data": {
+                        "incident_types": [
+                            {
+                                "type": "FireRescue",
+                                "value": 742,
+                                "percent_of_whole": 33.54430379746836
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 46,
+                                "percent_of_whole": 2.0795660036166366
+                            },
+                            {
+                                "type": "Other",
+                                "value": 179,
+                                "percent_of_whole": 8.092224231464739
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 381,
+                                "percent_of_whole": 17.224231464737795
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 864,
+                                "percent_of_whole": 39.059674502712475
+                            }
+                        ],
+                        "failure_types": []
+                    }
+                },
+                {
+                    "month": 7,
+                    "metro_data": {
+                        "incident_types": [
+                            {
+                                "type": "Hazmat",
+                                "value": 1,
+                                "percent_of_whole": 1.36986301369863
+                            },
+                            {
+                                "type": "Other",
+                                "value": 2,
+                                "percent_of_whole": 2.73972602739726
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 52,
+                                "percent_of_whole": 71.23287671232876
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 18,
+                                "percent_of_whole": 24.65753424657534
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "state_data": {
+                        "incident_types": [
+                            {
+                                "type": "EMS",
+                                "value": 458,
+                                "percent_of_whole": 24.45274959957288
+                            },
+                            {
+                                "type": "Other",
+                                "value": 155,
+                                "percent_of_whole": 8.275493860117459
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 603,
+                                "percent_of_whole": 32.19434063000534
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 50,
+                                "percent_of_whole": 2.669514148424987
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 607,
+                                "percent_of_whole": 32.40790176187934
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "national_data": {
+                        "incident_types": [
+                            {
+                                "type": "EMS",
+                                "value": 460,
+                                "percent_of_whole": 19.327731092436977
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 56,
+                                "percent_of_whole": 2.3529411764705883
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 783,
+                                "percent_of_whole": 32.89915966386555
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 891,
+                                "percent_of_whole": 37.436974789915965
+                            },
+                            {
+                                "type": "Other",
+                                "value": 190,
+                                "percent_of_whole": 7.9831932773109235
+                            }
+                        ],
+                        "failure_types": []
+                    }
+                },
+                {
+                    "month": 8,
+                    "metro_data": {
+                        "incident_types": [
+                            {
+                                "type": "EMS",
+                                "value": 1,
+                                "percent_of_whole": 1.2987012987012987
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 54,
+                                "percent_of_whole": 70.12987012987013
+                            },
+                            {
+                                "type": "Other",
+                                "value": 2,
+                                "percent_of_whole": 2.5974025974025974
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 1,
+                                "percent_of_whole": 1.2987012987012987
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 19,
+                                "percent_of_whole": 24.675324675324674
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "state_data": {
+                        "incident_types": [
+                            {
+                                "type": "Arson",
+                                "value": 589,
+                                "percent_of_whole": 36.33559531153609
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 40,
+                                "percent_of_whole": 2.4676125848241828
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 407,
+                                "percent_of_whole": 25.10795805058606
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 474,
+                                "percent_of_whole": 29.241209130166563
+                            },
+                            {
+                                "type": "Other",
+                                "value": 111,
+                                "percent_of_whole": 6.847624922887106
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "national_data": {
+                        "incident_types": [
+                            {
+                                "type": "EMS",
+                                "value": 409,
+                                "percent_of_whole": 19.103222793087344
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 48,
+                                "percent_of_whole": 2.241943017281644
+                            },
+                            {
+                                "type": "Other",
+                                "value": 156,
+                                "percent_of_whole": 7.286314806165343
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 852,
+                                "percent_of_whole": 39.79448855674918
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 676,
+                                "percent_of_whole": 31.574030826716488
+                            }
+                        ],
+                        "failure_types": []
+                    }
+                },
+                {
+                    "month": 9,
+                    "metro_data": {
+                        "incident_types": [
+                            {
+                                "type": "Hazmat",
+                                "value": 1,
+                                "percent_of_whole": 1.1111111111111112
+                            },
+                            {
+                                "type": "Other",
+                                "value": 3,
+                                "percent_of_whole": 3.3333333333333335
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 64,
+                                "percent_of_whole": 71.11111111111111
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 20,
+                                "percent_of_whole": 22.22222222222222
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 2,
+                                "percent_of_whole": 2.2222222222222223
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "state_data": {
+                        "incident_types": [
+                            {
+                                "type": "Hazmat",
+                                "value": 36,
+                                "percent_of_whole": 2.2813688212927756
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 408,
+                                "percent_of_whole": 25.85551330798479
+                            },
+                            {
+                                "type": "Other",
+                                "value": 111,
+                                "percent_of_whole": 7.0342205323193925
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 426,
+                                "percent_of_whole": 26.996197718631176
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 597,
+                                "percent_of_whole": 37.832699619771866
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "national_data": {
+                        "incident_types": [
+                            {
+                                "type": "Hazmat",
+                                "value": 43,
+                                "percent_of_whole": 2.108876900441393
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 598,
+                                "percent_of_whole": 29.328102010789603
+                            },
+                            {
+                                "type": "Other",
+                                "value": 153,
+                                "percent_of_whole": 7.503678273663561
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 818,
+                                "percent_of_whole": 40.11770475723394
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 427,
+                                "percent_of_whole": 20.941638057871508
+                            }
+                        ],
+                        "failure_types": []
+                    }
+                },
+                {
+                    "month": 10,
+                    "metro_data": {
+                        "incident_types": [
+                            {
+                                "type": "EMS",
+                                "value": 1,
+                                "percent_of_whole": 1.1764705882352942
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 1,
+                                "percent_of_whole": 1.1764705882352942
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 18,
+                                "percent_of_whole": 21.176470588235293
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 63,
+                                "percent_of_whole": 74.11764705882354
+                            },
+                            {
+                                "type": "Other",
+                                "value": 2,
+                                "percent_of_whole": 2.3529411764705883
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "state_data": {
+                        "incident_types": [
+                            {
+                                "type": "EMS",
+                                "value": 423,
+                                "percent_of_whole": 26.637279596977333
+                            },
+                            {
+                                "type": "Other",
+                                "value": 103,
+                                "percent_of_whole": 6.486146095717885
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 44,
+                                "percent_of_whole": 2.770780856423174
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 435,
+                                "percent_of_whole": 27.39294710327456
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 583,
+                                "percent_of_whole": 36.712846347607055
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "national_data": {
+                        "incident_types": [
+                            {
+                                "type": "EMS",
+                                "value": 424,
+                                "percent_of_whole": 20.03780718336484
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 840,
+                                "percent_of_whole": 39.69754253308129
+                            },
+                            {
+                                "type": "Other",
+                                "value": 154,
+                                "percent_of_whole": 7.277882797731569
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 55,
+                                "percent_of_whole": 2.599243856332703
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 643,
+                                "percent_of_whole": 30.387523629489603
+                            }
+                        ],
+                        "failure_types": []
+                    }
+                },
+                {
+                    "month": 11,
+                    "metro_data": {
+                        "incident_types": [
+                            {
+                                "type": "Arson",
+                                "value": 56,
+                                "percent_of_whole": 75.67567567567568
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 15,
+                                "percent_of_whole": 20.27027027027027
+                            },
+                            {
+                                "type": "Other",
+                                "value": 3,
+                                "percent_of_whole": 4.054054054054054
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "state_data": {
+                        "incident_types": [
+                            {
+                                "type": "Hazmat",
+                                "value": 58,
+                                "percent_of_whole": 3.953646898432175
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 387,
+                                "percent_of_whole": 26.380368098159508
+                            },
+                            {
+                                "type": "Other",
+                                "value": 96,
+                                "percent_of_whole": 6.5439672801636
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 396,
+                                "percent_of_whole": 26.993865030674847
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 530,
+                                "percent_of_whole": 36.12815269256987
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "national_data": {
+                        "incident_types": [
+                            {
+                                "type": "Hazmat",
+                                "value": 68,
+                                "percent_of_whole": 3.462321792260693
+                            },
+                            {
+                                "type": "Other",
+                                "value": 129,
+                                "percent_of_whole": 6.5682281059063135
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 388,
+                                "percent_of_whole": 19.75560081466395
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 607,
+                                "percent_of_whole": 30.906313645621182
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 772,
+                                "percent_of_whole": 39.307535641547865
+                            }
+                        ],
+                        "failure_types": []
+                    }
+                },
+                {
+                    "month": 12,
+                    "metro_data": {
+                        "incident_types": [
+                            {
+                                "type": "Hazmat",
+                                "value": 3,
+                                "percent_of_whole": 3.9473684210526314
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 17,
+                                "percent_of_whole": 22.36842105263158
+                            },
+                            {
+                                "type": "Other",
+                                "value": 2,
+                                "percent_of_whole": 2.631578947368421
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 54,
+                                "percent_of_whole": 71.05263157894737
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "state_data": {
+                        "incident_types": [
+                            {
+                                "type": "EMS",
+                                "value": 383,
+                                "percent_of_whole": 25.756556825823807
+                            },
+                            {
+                                "type": "Other",
+                                "value": 114,
+                                "percent_of_whole": 7.666442501681238
+                            },
+                            {
+                                "type": "Hazmat",
+                                "value": 50,
+                                "percent_of_whole": 3.362474781439139
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 412,
+                                "percent_of_whole": 27.706792199058505
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 528,
+                                "percent_of_whole": 35.50773369199731
+                            }
+                        ],
+                        "failure_types": []
+                    },
+                    "national_data": {
+                        "incident_types": [
+                            {
+                                "type": "Hazmat",
+                                "value": 71,
+                                "percent_of_whole": 3.4151034151034154
+                            },
+                            {
+                                "type": "FireRescue",
+                                "value": 673,
+                                "percent_of_whole": 32.37133237133237
+                            },
+                            {
+                                "type": "EMS",
+                                "value": 385,
+                                "percent_of_whole": 18.51851851851852
+                            },
+                            {
+                                "type": "Arson",
+                                "value": 795,
+                                "percent_of_whole": 38.23953823953824
+                            },
+                            {
+                                "type": "Other",
+                                "value": 155,
+                                "percent_of_whole": 7.455507455507456
+                            }
+                        ],
+                        "failure_types": []
+                    }
+                }
+            ]
+        }
+    ]
+}
