@@ -30,3 +30,13 @@ db.BasicIncident.aggregate([
    {$project: {_id:0, year:"$_id.year", month:"$_id.month", type:"$_id.type", count:1}},
    {$out : "IncidentNationalMonthly"}
  ])
+ 
+db.EquipFailbyStateYear_FireDeptStateMoYearItem.aggregate([
+   {$group: {_id:{ 
+       year:"$Year", 
+       month:"$Month", 
+	   type:"$Calc_FailureItemType"},
+ count: { $sum: 1 }}},
+   {$project: {_id:0, year:"$_id.year", month:"$_id.month", type:"$_id.type", count:1}},
+   {$out : "EquipmentFailureNationalMonthly"}
+ ])
