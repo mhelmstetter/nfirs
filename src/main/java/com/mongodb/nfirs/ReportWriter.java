@@ -52,7 +52,7 @@ public class ReportWriter {
         this.reportYear = year;
         this.state = state;
         this.county = county;
-        mongoClient = new MongoClient("localhost", 27017);
+        mongoClient = new MongoClient("ec2-54-90-57-100.compute-1.amazonaws.com", 27017);
         DB db = mongoClient.getDB("nfirs");
         incidentCountyMonthly = db.getCollection("IncidentCountyMonthly");
         incidentStateMonthly = db.getCollection("IncidentStateMonthly");
