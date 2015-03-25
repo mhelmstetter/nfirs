@@ -1,9 +1,9 @@
 package com.mongodb.nfirs;
 
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -13,7 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.gson.stream.JsonWriter;
+import com.mongodb.AggregationOptions;
 import com.mongodb.BasicDBObject;
+import com.mongodb.Cursor;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
@@ -46,13 +48,18 @@ public class ReportWriter {
     private DBCollection equipmentFailureStateYtd;
     private DBCollection equipmentFailureNationalYtd;
     
-    JsonWriter writer = new JsonWriter(new OutputStreamWriter(System.out));
+    JsonWriter writer;
     
-    public ReportWriter(int year, String state, String county) throws UnknownHostException {
+    public ReportWriter(int year, String state, String county) throws IOException {
+        
+        String countyName = county.replaceAll(" ", "_").toLowerCase();
+        
+        writer = new JsonWriter(new FileWriter("data/" + countyName + ".json"));
+        
         this.reportYear = year;
         this.state = state;
         this.county = county;
-        mongoClient = new MongoClient("ec2-54-90-57-100.compute-1.amazonaws.com", 27017);
+        mongoClient = new MongoClient("localhost", 27017);
         DB db = mongoClient.getDB("nfirs");
         incidentCountyMonthly = db.getCollection("IncidentCountyMonthly");
         incidentStateMonthly = db.getCollection("IncidentStateMonthly");
@@ -177,158 +184,159 @@ public class ReportWriter {
     }
     
     public void aggregateCountyYtds(DBCollection sourceMonthlyCollection, DBCollection destinationYtdCollection) {
+        AggregationOptions aggregationOptions = AggregationOptions.builder()
+                .outputMode(AggregationOptions.OutputMode.CURSOR).build();
+        
         DBObject query = new BasicDBObject();
         query.put("state", state);
         query.put("county", county);
         
-        DBObject orderBy = new BasicDBObject();
-        orderBy.put("type", 1);
-        orderBy.put("month", 1);
+        DBObject match = new BasicDBObject("$match", query);
         
-        // hack to make sure we reset the data while things are changing
+        DBObject groupFields = new BasicDBObject();
+        DBObject groupInner = new BasicDBObject("_id", groupFields);
+        DBObject group = new BasicDBObject("$group", groupInner);
+        groupFields.put("type", "$type");
+        groupInner.put("count", new BasicDBObject("$sum", "$count"));
+        
+        DBObject projectFields = new BasicDBObject();
+        DBObject project = new BasicDBObject("$project", projectFields);
+        projectFields.put("_id", 0);
+        projectFields.put("type", "$_id.type");
+        projectFields.put("count", 1);
+        
+
         destinationYtdCollection.drop();
+        
+        List<DBObject> batchInserts = new ArrayList<DBObject>();
         
         for (int year = (reportYear-3); year < reportYear; year++) {
             query.put("year", year);
-            //long existingCount = destinationYtdCollection.count(query);
-            //logger.debug("Existing count for " + destinationYtdCollection + " for year " + year + " is " + existingCount);
-            //if (existingCount == 0) {
+            
+            for (int month = 1; month <= 12; month++) {
                 
-                double yearToDate = 0;
-                for (int month = 1; month <= 12; month++) {
-                    
-                    query.put("month", new BasicDBObject("$lte", month));
-                    DBCursor cursor = sourceMonthlyCollection.find(query).sort(orderBy);
-                    
-                    logger.debug("db." + sourceMonthlyCollection + ".find(" + query + ")");
-                    
-                    String lastType = null;
-                    while (cursor.hasNext()) {
-                        DBObject next = cursor.next();
-                        
-                        String type = (String)next.get("type");
-                        Double count = getCount(next);
-                        
-                        if (type.equals(lastType)) {
-                            yearToDate += count;
-                        } else {
-                            DBObject ytd = new BasicDBObject();
-                            ytd.put("state", state);
-                            ytd.put("county", county);
-                            ytd.put("year", year);
-                            ytd.put("month", month);
-                            ytd.put("count", yearToDate);
-                            ytd.put("type", lastType);
-                            destinationYtdCollection.insert(ytd);
-                            
-                            yearToDate = count; 
-                        }
-                        lastType = type;
-                    }
+                query.put("month", new BasicDBObject("$lte", month));
+                
+                projectFields.put("state", new BasicDBObject("$literal", state));
+                projectFields.put("county", new BasicDBObject("$literal", county));
+                projectFields.put("year", new BasicDBObject("$literal", year));
+                projectFields.put("month", new BasicDBObject("$literal", month));
+                
+                List<DBObject> pipeline = Arrays.asList(match, group, project);
+                
+                
+                Cursor cursor = sourceMonthlyCollection.aggregate(pipeline, aggregationOptions);
+                while (cursor.hasNext()) {
+                    DBObject next = cursor.next();
+                    batchInserts.add(next);
                 }
-            //}
+            }
+        }
+        if (batchInserts.size() > 0) {
+            destinationYtdCollection.insert(batchInserts);
         }
     }
     
     public void aggregateStateYtds(DBCollection sourceMonthlyCollection, DBCollection destinationYtdCollection) {
+        
+        AggregationOptions aggregationOptions = AggregationOptions.builder()
+                .outputMode(AggregationOptions.OutputMode.CURSOR).build();
+        
         DBObject query = new BasicDBObject();
         query.put("state", state);
         
-        DBObject orderBy = new BasicDBObject();
-        orderBy.put("type", 1);
-        orderBy.put("month", 1);
+        DBObject match = new BasicDBObject("$match", query);
         
-        // hack to make sure we reset the data while things are changing
+        DBObject groupFields = new BasicDBObject();
+        DBObject groupInner = new BasicDBObject("_id", groupFields);
+        DBObject group = new BasicDBObject("$group", groupInner);
+        groupFields.put("type", "$type");
+        groupInner.put("count", new BasicDBObject("$sum", "$count"));
+        
+        DBObject projectFields = new BasicDBObject();
+        DBObject project = new BasicDBObject("$project", projectFields);
+        projectFields.put("_id", 0);
+        projectFields.put("type", "$_id.type");
+        projectFields.put("count", 1);
+        
+
         destinationYtdCollection.drop();
+        
+        List<DBObject> batchInserts = new ArrayList<DBObject>();
         
         for (int year = (reportYear-3); year < reportYear; year++) {
             query.put("year", year);
-            long existingCount = destinationYtdCollection.count(query);
-            logger.debug("Existing count for " + destinationYtdCollection + " for year " + year + " is " + existingCount);
-            //if (existingCount == 0) {
+            
+            for (int month = 1; month <= 12; month++) {
                 
-                double yearToDate = 0;
-                for (int month = 1; month <= 12; month++) {
-                    
-                    query.put("month", new BasicDBObject("$lte", month));
-                    DBCursor cursor = sourceMonthlyCollection.find(query).sort(orderBy);
-                    
-                    logger.debug("db." + sourceMonthlyCollection + ".find(" + query + ")");
-                    
-                    String lastType = null;
-                    while (cursor.hasNext()) {
-                        DBObject next = cursor.next();
-                        
-                        String type = (String)next.get("type");
-                        Double count = getCount(next);
-                        
-                        if (type.equals(lastType)) {
-                            yearToDate += count;
-                        } else {
-                            DBObject ytd = new BasicDBObject();
-                            ytd.put("state", state);
-                            ytd.put("year", year);
-                            ytd.put("month", month);
-                            ytd.put("count", yearToDate);
-                            ytd.put("type", lastType);
-                            destinationYtdCollection.insert(ytd);
-                            
-                            yearToDate = count; 
-                        }
-                        lastType = type;
-                    }
+                query.put("month", new BasicDBObject("$lte", month));
+                
+                projectFields.put("state", new BasicDBObject("$literal", state));
+                projectFields.put("year", new BasicDBObject("$literal", year));
+                projectFields.put("month", new BasicDBObject("$literal", month));
+                
+                List<DBObject> pipeline = Arrays.asList(match, group, project);
+                
+                
+                Cursor cursor = sourceMonthlyCollection.aggregate(pipeline, aggregationOptions);
+                while (cursor.hasNext()) {
+                    DBObject next = cursor.next();
+                    batchInserts.add(next);
                 }
-            //}
+            }
+        }
+        if (batchInserts.size() > 0) {
+            destinationYtdCollection.insert(batchInserts);
         }
     }
     
     public void aggregateNationalYtds(DBCollection sourceMonthlyCollection, DBCollection destinationYtdCollection) {
+        AggregationOptions aggregationOptions = AggregationOptions.builder()
+                .outputMode(AggregationOptions.OutputMode.CURSOR).build();
+        
         DBObject query = new BasicDBObject();
         
-        DBObject orderBy = new BasicDBObject();
-        orderBy.put("type", 1);
-        orderBy.put("month", 1);
+        DBObject match = new BasicDBObject("$match", query);
         
-        // hack to make sure we reset the data while things are changing
+        DBObject groupFields = new BasicDBObject();
+        DBObject groupInner = new BasicDBObject("_id", groupFields);
+        DBObject group = new BasicDBObject("$group", groupInner);
+        groupFields.put("type", "$type");
+        groupInner.put("count", new BasicDBObject("$sum", "$count"));
+        
+        DBObject projectFields = new BasicDBObject();
+        DBObject project = new BasicDBObject("$project", projectFields);
+        projectFields.put("_id", 0);
+        projectFields.put("type", "$_id.type");
+        projectFields.put("count", 1);
+        
+
         destinationYtdCollection.drop();
+        
+        List<DBObject> batchInserts = new ArrayList<DBObject>();
         
         for (int year = (reportYear-3); year < reportYear; year++) {
             query.put("year", year);
-            long existingCount = destinationYtdCollection.count(query);
-            logger.debug("Existing count for " + destinationYtdCollection + " for year " + year + " is " + existingCount);
-            //if (existingCount == 0) {
+            
+            for (int month = 1; month <= 12; month++) {
                 
-                double yearToDate = 0;
-                for (int month = 1; month <= 12; month++) {
-                    
-                    query.put("month", new BasicDBObject("$lte", month));
-                    DBCursor cursor = sourceMonthlyCollection.find(query).sort(orderBy);
-                    
-                    logger.debug("db." + sourceMonthlyCollection + ".find(" + query + ")");
-                    
-                    String lastType = null;
-                    while (cursor.hasNext()) {
-                        DBObject next = cursor.next();
-                        
-                        String type = (String)next.get("type");
-                        Double count = getCount(next);
-                        
-                        if (type.equals(lastType)) {
-                            yearToDate += count;
-                        } else {
-                            DBObject ytd = new BasicDBObject();
-                            ytd.put("year", year);
-                            ytd.put("month", month);
-                            ytd.put("count", yearToDate);
-                            ytd.put("type", lastType);
-                            destinationYtdCollection.insert(ytd);
-                            
-                            yearToDate = count; 
-                        }
-                        lastType = type;
-                    }
+                query.put("month", new BasicDBObject("$lte", month));
+                
+                projectFields.put("year", new BasicDBObject("$literal", year));
+                projectFields.put("month", new BasicDBObject("$literal", month));
+                
+                List<DBObject> pipeline = Arrays.asList(match, group, project);
+                
+                
+                Cursor cursor = sourceMonthlyCollection.aggregate(pipeline, aggregationOptions);
+                while (cursor.hasNext()) {
+                    DBObject next = cursor.next();
+                    batchInserts.add(next);
                 }
-            //}
+            }
+        }
+        if (batchInserts.size() > 0) {
+            destinationYtdCollection.insert(batchInserts);
         }
     }
     
@@ -411,17 +419,17 @@ public class ReportWriter {
     }
     
     public static void main(String[] args) throws IOException {
-        if (args.length < 3) {
-            usage();
-            System.exit(-1);
-        }
-        int year = Integer.parseInt(args[0]);
+        // 2012 IL COOK
         
         
-        ReportWriter writer = new ReportWriter(year, args[1], args[2]);
+        //ReportWriter writer = new ReportWriter(2013, "CA", "LOS ANGELES");
+        //writer.writeReport();
         
-        
+        ReportWriter writer = new ReportWriter(2013, "MD", "HOWARD");
         writer.writeReport();
+        
+        //writer = new ReportWriter(2013, "IL", "COOK");
+        //writer.writeReport();
     }
 
 

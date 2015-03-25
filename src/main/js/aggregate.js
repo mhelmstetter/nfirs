@@ -21,6 +21,16 @@ db.BasicIncident.aggregate([
    {$out : "IncidentStateMonthly"}
  ])
  
+db.IncidentStateMonthly.aggregate([
+   {$group: {_id:{ 
+       year:"$year", 
+       month:"$month", 
+	   type:"$type"},
+ count: { $sum: "$count" }}},
+   {$project: {_id:0, year:"$_id.year", month:"$_id.month", type:"$_id.type", count:1}},
+   {$out : "IncidentNationalMonthly"}
+ ])
+ 
 db.BasicIncident.aggregate([
    {$group: {_id:{ 
        year:"$CopyBasicIncident_Year", 
