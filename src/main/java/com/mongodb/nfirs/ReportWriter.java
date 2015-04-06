@@ -83,6 +83,8 @@ public class ReportWriter {
         List<DBObject> results = new ArrayList<DBObject>();
         int totalCount = 0;
         DBCursor cursor = coll.find(query);
+        logger.debug(coll.getName() + " " + query + " count: " + cursor.count());
+        
         while (cursor.hasNext()) {
             DBObject row = cursor.next();
             Double count = getCount(row);
@@ -205,9 +207,6 @@ public class ReportWriter {
         projectFields.put("type", "$_id.type");
         projectFields.put("count", 1);
         
-
-        destinationYtdCollection.drop();
-        
         List<DBObject> batchInserts = new ArrayList<DBObject>();
         
         for (int year = (reportYear-3); year < reportYear; year++) {
@@ -259,9 +258,6 @@ public class ReportWriter {
         projectFields.put("type", "$_id.type");
         projectFields.put("count", 1);
         
-
-        destinationYtdCollection.drop();
-        
         List<DBObject> batchInserts = new ArrayList<DBObject>();
         
         for (int year = (reportYear-3); year < reportYear; year++) {
@@ -311,8 +307,6 @@ public class ReportWriter {
         projectFields.put("count", 1);
         
 
-        destinationYtdCollection.drop();
-        
         List<DBObject> batchInserts = new ArrayList<DBObject>();
         
         for (int year = (reportYear-3); year < reportYear; year++) {
@@ -352,6 +346,17 @@ public class ReportWriter {
         return count;
     }
     
+    public void dropAggregateCollections() {
+        incidentCountyYtd.drop();
+        equipmentFailureCountyYtd.drop();
+        
+        incidentStateYtd.drop();
+        equipmentFailureStateYtd.drop();
+        
+        incidentNationalYtd.drop();
+        equipmentFailureNationalYtd.drop();
+    }
+    
     public void writeReport() throws IOException {
         
         aggregateCountyYtds(incidentCountyMonthly, incidentCountyYtd);
@@ -377,7 +382,7 @@ public class ReportWriter {
         
         writer.name("years").beginArray();
         
-        for (int year = (reportYear-3); year < reportYear; year++) {
+        for (int year = (reportYear-2); year <= reportYear; year++) {
             writer.beginObject();
             writer.name("year").value(year);
             
@@ -422,14 +427,18 @@ public class ReportWriter {
         // 2012 IL COOK
         
         
-        //ReportWriter writer = new ReportWriter(2013, "CA", "LOS ANGELES");
-        //writer.writeReport();
-        
-        ReportWriter writer = new ReportWriter(2013, "MD", "HOWARD");
+        ReportWriter writer = new ReportWriter(2013, "CA", "LOS ANGELES");
+        writer.dropAggregateCollections();
         writer.writeReport();
         
-        //writer = new ReportWriter(2013, "IL", "COOK");
-        //writer.writeReport();
+        writer = new ReportWriter(2013, "MD", "HOWARD");
+        writer.writeReport();
+        
+        writer = new ReportWriter(2013, "IL", "COOK");
+        writer.writeReport();
+        
+        writer = new ReportWriter(2013, "KS", "");
+        writer.writeReport();
     }
 
 
